@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Lyubov Rodina <kreizsasha@gmail.com>"]
 readme = "README.md"
-packages = [{include = "diff_generator"}]
+packages = [{include = "gendiff"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
