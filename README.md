@@ -3,6 +3,7 @@
 
 
 <a href="https://codeclimate.com/github/Anxieye/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/188b24689a96b9855249/maintainability" /></a>
+<a href="https://codeclimate.com/github/Anxieye/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/188b24689a96b9855249/test_coverage" /></a>
 
 
 # asciinema gendiff
