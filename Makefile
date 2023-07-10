@@ -7,7 +7,7 @@ build:
 
 
 lint:
-	poetry run flake8
+	poetry run flake8 gendiff
 
 
 publish:
@@ -24,3 +24,20 @@ package-reinstall:
 
 package-uninstall:
 	python3 -m pip uninstall dist/*.whl
+
+
+test:
+	poetry run pytest
+
+
+coverage:
+	poetry run pytest --cov=gendiff --cov-report xml
+
+
+selfcheck:
+	poetry check
+
+
+check: selfcheck test lint
+
+
