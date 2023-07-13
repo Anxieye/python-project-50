@@ -1,9 +1,10 @@
 import json
+import yaml
 
 
 def generate_diff(first_path, second_path):
-    file1 = json.load(open(first_path))
-    file2 = json.load(open(second_path))
+    file1 = get_converted_file(first_path)
+    file2 = get_converted_file(second_path)
     sorted_set = sorted(set(file1) | set(file2))
     diff = ''
 
@@ -28,3 +29,12 @@ def gen_js_bool(value):
         return str(value).lower()
     else:
         return value
+
+
+def get_converted_file(file_path):
+    if file_path.endswith('.json'):
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    if file_path.endswith('.yml') or file_path.endswith('.yaml'):
+        with open(file_path, 'r') as file:
+            return yaml.safe_load(file)
