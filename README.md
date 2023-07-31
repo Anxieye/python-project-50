@@ -8,3 +8,6 @@
 
 # asciinema gendiff: -h flag and example of comparing two files with different formats
 <a href="https://asciinema.org/a/YKF8L8MMXDYe4QeM9Cp1VZakC" target="_blank"><img src="https://asciinema.org/a/YKF8L8MMXDYe4QeM9Cp1VZakC.svg" /></a>
+
+# asciinema gendiff: "stylish" formatter with trees
+<a href="https://asciinema.org/a/8JNNc1JOlxuiEFnagaMm8z5aE" target="_blank"><img src="https://asciinema.org/a/8JNNc1JOlxuiEFnagaMm8z5aE.svg" /></a>
