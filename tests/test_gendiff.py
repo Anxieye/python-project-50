@@ -3,9 +3,10 @@ from gendiff.formatters import gen_js_bool
 import pytest
 
 
-flat = 'tests/fixtures/result_json.txt'
+flat = 'tests/fixtures/flat_result.txt'
 tree = 'tests/fixtures/result_tree.txt'
 plain = 'tests/fixtures/plain_result.txt'
+json = 'tests/fixtures/json_result.json'
 fst_json = 'tests/fixtures/file1.json'
 scnd_json = 'tests/fixtures/file2.json'
 fst_yaml = 'tests/fixtures/file1.yml'
@@ -26,7 +27,10 @@ yml_2 = 'tests/fixtures/tree2.yml'
                           (yml_1, yml_2, tree, 'stylish'),
                           (js_1, js_2, plain, 'plain'),
                           (js_1, yml_2, plain, 'plain'),
-                          (yml_1, yml_2, plain, 'plain')
+                          (yml_1, yml_2, plain, 'plain'),
+                          (js_1, js_2, json, 'json'),
+                          (js_1, yml_2, json, 'json'),
+                          (yml_1, yml_2, json, 'json')
                           ]
                          )
 def test_generate_diff(file1, file2, excepted, format):
