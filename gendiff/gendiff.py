@@ -1,6 +1,7 @@
 import json
 import yaml
-from gendiff.formatters.js_formatter import stylish
+from gendiff.formatters.stylish_formatter import stylish
+from gendiff.formatters.plain_formatter import plain
 
 
 def diff(tree1, tree2):
@@ -67,7 +68,9 @@ def generate_diff(first_path, second_path, format='stylish'):
     and the "stylish"
     which creates a string vision of difference
     """
-    formatters = {'stylish': stylish}
+    formatters = {'stylish': stylish,
+                  'plain': plain
+                  }
     file1 = get_converted_file(first_path)
     file2 = get_converted_file(second_path)
     difference = diff(file1, file2)
