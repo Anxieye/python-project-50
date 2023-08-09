@@ -71,7 +71,7 @@ def get_added_property(value, path, type):
     string = ''
     if isinstance(value, dict):
         string += f"Property '{path}' was added with value: [complex value]\n"
-    elif value in type:
+    elif value in type or isinstance(value, int):
         string += f"Property '{path}' was added with value: {value}\n"
     else:
         string += f"Property '{path}' was added with value: '{value}'\n"
@@ -91,27 +91,28 @@ def get_changed_property(path, new, old, type):
     """
     string = ''
     if isinstance(old, dict):
-        if new in type:
+        if new in type or isinstance(new, int):
             string += f"Property '{path}' was updated. "
             string += f"From [complex value] to {new}\n"
         else:
             string += f"Property '{path}' was updated. "
             string += f"From [complex value] to '{new}'\n"
     elif isinstance(new, dict):
-        if old in type:
+        if old in type or isinstance(old, int):
             string += f"Property '{path}' was updated. "
             string += f"From {old} to [complex value]\n"
         else:
             string += f"Property '{path}' was updated. "
             string += f"From '{old}' to [complex value]\n"
     else:
-        if old in type and new in type:
+        if (old in type and new in type) \
+         or (isinstance(old, int) and isinstance(new, int)):
             string += f"Property '{path}' was updated. "
             string += f"From {old} to {new}\n"
-        elif new in type:
+        elif new in type or isinstance(new, int):
             string += f"Property '{path}' was updated. "
             string += f"From '{old}' to {new}\n"
-        elif old in type:
+        elif old in type or isinstance(old, int):
             string += f"Property '{path}' was updated. "
             string += f"From {old} to '{new}'\n"
         else:
