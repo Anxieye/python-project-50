@@ -1,0 +1,98 @@
+{
+    "common": {
+        "state": "dictionary",
+        "value": {
+            "follow": {
+                "state": "added",
+                "value": false
+            },
+            "setting1": {
+                "state": "not_changed",
+                "value": "Value 1"
+            },
+            "setting2": {
+                "state": "deleted",
+                "value": 200
+            },
+            "setting3": {
+                "state": "changed",
+                "old_value": true,
+                "new_value": null
+            },
+            "setting4": {
+                "state": "added",
+                "value": "blah blah"
+            },
+            "setting5": {
+                "state": "added",
+                "value": {
+                    "key5": "value5"
+                }
+            },
+            "setting6": {
+                "state": "dictionary",
+                "value": {
+                    "doge": {
+                        "state": "dictionary",
+                        "value": {
+                            "wow": {
+                                "state": "changed",
+                                "old_value": "",
+                                "new_value": "so much"
+                            }
+                        }
+                    },
+                    "key": {
+                        "state": "not_changed",
+                        "value": "value"
+                    },
+                    "ops": {
+                        "state": "added",
+                        "value": "vops"
+                    }
+                }
+            }
+        }
+    },
+    "group1": {
+        "state": "dictionary",
+        "value": {
+            "baz": {
+                "state": "changed",
+                "old_value": "bas",
+                "new_value": "bars"
+            },
+            "foo": {
+                "state": "not_changed",
+                "value": "bar"
+            },
+            "nest": {
+                "state": "changed",
+                "old_value": {
+                    "key": "value"
+                },
+                "new_value": "str"
+            }
+        }
+    },
+    "group2": {
+        "state": "deleted",
+        "value": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        }
+    },
+    "group3": {
+        "state": "added",
+        "value": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        }
+    }
+}
