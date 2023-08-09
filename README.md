@@ -14,3 +14,6 @@
 
 # asciinema gendiff: "plain" formatter with trees
 <a href="https://asciinema.org/a/yCWrsKxsURbafEcJHNZXCjObk" target="_blank"><img src="https://asciinema.org/a/yCWrsKxsURbafEcJHNZXCjObk.svg" /></a>
+
+# asciinema gendiff: "json" formatter with trees
+<a href="https://asciinema.org/a/KwLLop3rf97ysHqREwEksqDsX" target="_blank"><img src="https://asciinema.org/a/KwLLop3rf97ysHqREwEksqDsX.svg" /></a>
