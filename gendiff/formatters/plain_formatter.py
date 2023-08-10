@@ -91,22 +91,21 @@ def get_changed_property(path, new, old, type):
     """
     string = ''
     if isinstance(old, dict):
-        if new in type or isinstance(new, int):
+        if is_not_str(new, type):
             string += f"Property '{path}' was updated. "
             string += f"From [complex value] to {new}\n"
         else:
             string += f"Property '{path}' was updated. "
             string += f"From [complex value] to '{new}'\n"
     elif isinstance(new, dict):
-        if old in type or isinstance(old, int):
+        if is_not_str(old, type):
             string += f"Property '{path}' was updated. "
             string += f"From {old} to [complex value]\n"
         else:
             string += f"Property '{path}' was updated. "
             string += f"From '{old}' to [complex value]\n"
     else:
-        if (old in type and new in type) \
-         or (isinstance(old, int) and isinstance(new, int)):
+        if is_not_str(old, type) and is_not_str(new, type):
             string += f"Property '{path}' was updated. "
             string += f"From {old} to {new}\n"
         elif new in type or isinstance(new, int):
@@ -119,3 +118,15 @@ def get_changed_property(path, new, old, type):
             string += f"Property '{path}' was updated. "
             string += f"From '{old}' to '{new}'\n"
     return string
+
+
+def is_not_str(value, type):
+    """
+    This is function-predicate for "get_changed_property".
+    This function checks if a value is a boolean type, NoneType
+    or not str and returns True or False
+    """
+    if not isinstance(value, str) or value in type:
+        return True
+    else:
+        return False
