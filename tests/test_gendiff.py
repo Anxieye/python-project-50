@@ -18,8 +18,7 @@ yml_2 = 'tests/fixtures/tree2.yml'
 
 
 @pytest.mark.parametrize('file1, file2, excepted, format',
-                         [
-                          (fst_json, scnd_json, flat, 'stylish'),
+                         [(fst_json, scnd_json, flat, 'stylish'),
                           (fst_yaml, scnd_yaml, flat, 'stylish'),
                           (fst_json, scnd_yaml, flat, 'stylish'),
                           (js_1, js_2, tree, 'stylish'),
@@ -30,9 +29,7 @@ yml_2 = 'tests/fixtures/tree2.yml'
                           (yml_1, yml_2, plain, 'plain'),
                           (js_1, js_2, json, 'json'),
                           (js_1, yml_2, json, 'json'),
-                          (yml_1, yml_2, json, 'json')
-                          ]
-                         )
+                          (yml_1, yml_2, json, 'json')])
 def test_generate_diff(file1, file2, excepted, format):
     with open(excepted, 'r') as excepted_result:
         result = excepted_result.read()
