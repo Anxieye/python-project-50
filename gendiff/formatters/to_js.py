@@ -1,4 +1,4 @@
-def gen_js_bool(value):
+def gen_json_value(value):
     """
     This function generates a string like in json files
     from python bool data type and NoneType.

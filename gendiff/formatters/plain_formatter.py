@@ -1,10 +1,11 @@
-from gendiff.formatters.to_js import gen_js_bool
+from gendiff.formatters.to_js import gen_json_value
 
 
 def plain(diff: dict) -> str:
     """
     This function completes the formatting of a string
-    by removing the last line break from it
+    by removing the last line break from it and
+    returns a final result
     """
     result = get_plain_string(diff, '', 1)
     result = result[:-1]
@@ -18,9 +19,9 @@ def get_plain_string(diff, path, depth):
     a description of what happened
     """
     string = ''
-    js_type = ['null', 'true', 'false']
+    JS_TYPE = ['null', 'true', 'false']
     for key in diff:
-        value = gen_js_bool(diff.get(key).get('value'))
+        value = gen_json_value(diff.get(key).get('value'))
         state = diff.get(key).get('state')
         if depth < 2:
             path = key
@@ -32,17 +33,17 @@ def get_plain_string(diff, path, depth):
                                         )
                        )
         if state == 'changed':
-            old = gen_js_bool(diff.get(key).get('old_value'))
-            new = gen_js_bool(diff.get(key).get('new_value'))
+            old = gen_json_value(diff.get(key).get('old_value'))
+            new = gen_json_value(diff.get(key).get('new_value'))
             string += (get_changed_property(build_path(depth, path, key),
                                             new, old,
-                                            js_type
+                                            JS_TYPE
                                             )
                        )
         if state == 'added':
             string += (get_added_property(value,
                                           build_path(depth, path, key),
-                                          js_type
+                                          JS_TYPE
                                           )
                        )
         if state == 'deleted':
@@ -71,7 +72,7 @@ def get_added_property(value, path, type):
     string = ''
     if isinstance(value, dict):
         string += f"Property '{path}' was added with value: [complex value]\n"
-    elif value in type or isinstance(value, int):
+    elif is_not_str(value, type):
         string += f"Property '{path}' was added with value: {value}\n"
     else:
         string += f"Property '{path}' was added with value: '{value}'\n"
@@ -122,8 +123,8 @@ def get_changed_property(path, new, old, type):
 
 def is_not_str(value, type):
     """
-    This is function-predicate for "get_changed_property".
-    This function checks if a value is a boolean type, NoneType
+    This is a function-predicate that
+    checks if a value is a boolean type, NoneType
     or not str and returns True or False
     """
     if not isinstance(value, str) or value in type:
