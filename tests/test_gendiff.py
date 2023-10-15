@@ -1,4 +1,4 @@
-from gendiff import generate_diff, get_converted_file
+from gendiff import generate_diff
 from gendiff.formatters import gen_json_value
 import pytest
 
@@ -44,11 +44,4 @@ def test_gen_json_value():
     assert gen_json_value(None) == 'null'
 
 
-@pytest.mark.parametrize('file', [fst_json, scnd_json,
-                                  fst_yaml, scnd_yaml,
-                                  js_1, js_2,
-                                  yml_1, yml_2
-                                  ]
-                         )
-def test_get_converted_file(file):
-    assert isinstance(get_converted_file(file), dict)
+
