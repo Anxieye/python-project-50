@@ -42,6 +42,3 @@ def test_gen_json_value():
     assert gen_json_value(10) == 10
     assert gen_json_value('false') == 'false'
     assert gen_json_value(None) == 'null'
-
-
-
