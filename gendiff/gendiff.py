@@ -1,8 +1,7 @@
-import json
-import yaml
 from gendiff.formatters import stylish
 from gendiff.formatters import plain
 from gendiff.formatters import js
+from gendiff.parser import get_converted_file
 
 
 def diff(tree1, tree2):
@@ -49,17 +48,15 @@ def diff(tree1, tree2):
     return result
 
 
-def get_converted_file(file_path):
-    """
-    This function creates a dict type of python
-    from json or yaml files
-    """
-    if file_path.endswith('.json'):
-        with open(file_path, 'r') as file:
-            return json.load(file)
-    if file_path.endswith('.yml') or file_path.endswith('.yaml'):
-        with open(file_path, 'r') as file:
-            return yaml.safe_load(file)
+def read_file(path):
+    return open(path)
+
+
+def get_extention(path):
+    if path.endswith('.json'):
+        return 'json'
+    if path.endswith('.yaml') or path.endswith('.yml'):
+        return 'yaml'
 
 
 def generate_diff(first_path, second_path, format='stylish'):
@@ -73,7 +70,11 @@ def generate_diff(first_path, second_path, format='stylish'):
                   'plain': plain,
                   'json': js
                   }
-    file1 = get_converted_file(first_path)
-    file2 = get_converted_file(second_path)
+    data1 = read_file(first_path)
+    data2 = read_file(second_path)
+    ext1 = get_extention(first_path)
+    ext2 = get_extention(second_path)
+    file1 = get_converted_file(ext1, data1)
+    file2 = get_converted_file(ext2, data2)
     difference = diff(file1, file2)
     return formatters[format](difference)

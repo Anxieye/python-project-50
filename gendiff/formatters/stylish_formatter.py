@@ -1,4 +1,4 @@
-from gendiff.formatters.to_js import gen_json_value
+from gendiff.formatters.to_style import gen_json_value
 
 
 def gen_json_string(dict_value, depth, special):
